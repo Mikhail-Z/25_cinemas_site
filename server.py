@@ -1,20 +1,12 @@
 from flask import Flask, render_template, jsonify, send_from_directory
-from films_finder import get_best_films
-from werkzeug.contrib.cache import FileSystemCache
 import os
-import tempfile
+from films_finder import get_best_films
+from scheduled_cache_updater import cache
 
 
 ONE_HOUR = 60 * 60
 
 app = Flask(__name__)
-cache = FileSystemCache(tempfile.gettempdir(), default_timeout=ONE_HOUR)
-
-
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 def update_cache():
@@ -24,8 +16,15 @@ def update_cache():
     return films
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+
 def get_films():
     films = cache.get('/')
+    print(films)
     if films is None:
         films = update_cache()
     return films
