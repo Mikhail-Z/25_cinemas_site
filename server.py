@@ -3,9 +3,7 @@ from films_finder import get_best_films
 from werkzeug.contrib.cache import FileSystemCache
 import os
 import tempfile
-import atexit
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.interval import IntervalTrigger
+
 
 ONE_HOUR = 60 * 60
 
@@ -49,11 +47,6 @@ def api():
 def api_documentation():
     return render_template('api_documentation.html')
 
-
-scheduler = BackgroundScheduler()
-scheduler.add_job(update_cache, trigger=IntervalTrigger(minutes=55))
-
-atexit.register(lambda: scheduler.shutdown(wait=False))
 
 if __name__ == "__main__":
     app.run()
