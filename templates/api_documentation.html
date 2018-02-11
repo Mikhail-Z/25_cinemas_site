@@ -1,0 +1,54 @@
+{% extends "_base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-8 offset-md-2">
+            <div class="card" style="margin-top: 10px; margin-bottom: 10px; padding: 10px">
+                <div class="card-header">
+                    <h3>API</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        API - это интерфейс, который позволяет получать информацию с сайта другим приложениям и сайтам.
+                    Синтаксис запросов и тип возвращаемых ими данных строго определены на стороне самого сайта, откуда предполагается брать информацию.
+                    На данном сайте тип возвращаемых данных - <a href="https://ru.wikipedia.org/wiki/JSON">JSON</a>.
+                    </p>
+
+                </div>
+                <div class="card-body">
+                    <p>
+                        Данный сайт позволяет получить список фильмов (10 штук) с необходимой информацией о них в формате json, обратившись по
+                        <a href="http://127.0.0.1:5000/api">адресу</a>.
+                    </p>
+                    Поля в этом объекте имеют следующее значение:
+                    <ul>
+                        <li>
+                            <span class="highlighted-information">name</span> - показывает назание фильма
+                        </li>
+                        <li>
+                            <span class="highlighted-information">cinemas_num</span> - количесво кинотеатов Москвы,в которых оказывают эот фильм
+                        </li>
+                        <li>
+                            <span class="highlighted-information">url_on_afisha</span> - ссылка на страницу с этим фильмом на сайте afisha.ru
+                        </li>
+                        <li>
+                            <span class="highlighted-information">rating</span> - средняя оценка фильма пользователями сайта afisha.ru
+                        </li>
+                        <li>
+                            <span class="highlighted-information">votes</span> - количество поставивших оценку фильму
+                        </li>
+                        <li>
+                            <span class="highlighted-information">genre</span> - список жанров фильма (максимум 2 штуки)
+                        </li>
+                        <li>
+                            <span class="highlighted-information">photo_url</span> - ссылка на картинку, используемую в карточке фильма на сайте
+                        </li>
+                        <li>
+                            <span class="highlighted-information">stars</span> - пара из двух элементов - числа (количество целых звезд) и bool-значения, показывающего есть ли половинка звезды.
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

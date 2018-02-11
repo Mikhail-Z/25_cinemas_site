@@ -1,0 +1,35 @@
+
+@keyframes white-flash {
+  from {
+    height: 200px;
+    background: url('../img/camera.jpeg');
+    background-size: cover;
+    opacity:0;
+  }
+  to {
+    height: 200px;
+    background: url('../img/camera.jpeg');
+    background-size: cover;
+    opacity:1;
+  }
+}
+
+.desc-background {
+  background: url('../img/camera.jpeg');
+  animation-name: white-flash;
+  animation-duration: 1s;
+  background-size: cover;
+  height: 200px;
+}
+
+#films-list {
+  margin-top:10px;
+  margin-bottom:40px;
+}
+
+.highlighted-information {
+  display: inline-block;
+  background-color: bisque;
+  color: darkred;
+  border-radius: 2px;
+}
