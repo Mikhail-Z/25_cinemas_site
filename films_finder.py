@@ -89,7 +89,7 @@ def get_film_info(film_url):
 
 
 def rating_formula(film):
-    return (4*film["votes"] + film["rating"]**4)*film["cinemas_num"]
+    return film["cinemas_num"]*(4*film["votes"] + film["rating"]**4)
 
 
 def get_stars_count(rating):

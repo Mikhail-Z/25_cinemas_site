@@ -15,6 +15,6 @@
 
 `$ python3 server.py`
 
-# Project Goals
+# Цели проекта
 
-The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
+Код написан в образовательных целях. Обучающий курс для веб-разработчиков - [DEVMAN.org](https://devman.org)
