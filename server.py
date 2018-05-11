@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, send_from_directory
 import os
-from scheduled_cache_updater import update_cache_periodically, get_films
+from scheduled_cache_updater import get_films, cache
 
 app = Flask(__name__)
 
