@@ -1,34 +1,22 @@
 from werkzeug.contrib.cache import FileSystemCache
-from time import sleep
 from films_finder import get_best_films
-import threading
 import tempfile
 
-ONE_HOUR = 60 * 60
+ONE_DAY = 60 * 60 * 24
 
 
-cache = FileSystemCache(tempfile.gettempdir(), default_timeout=ONE_HOUR)
+cache = FileSystemCache(tempfile.gettempdir(), default_timeout=ONE_DAY)
 
 
 def update_cache():
     top_number = 10
     films = get_best_films(top_number)
-    lock = threading.Lock()
-    lock.acquire()
     cache.set('/', films)
-    lock.release()
-    return films
-
-
-def update_cache_periodically():
-    while True:
-        update_cache()
-        update_period = int(ONE_HOUR/2)
-        sleep(update_period)
 
 
 def get_films():
     films = cache.get('/')
     if films is None:
-        films = update_cache()
+        update_cache()
+        films = cache.get('/')
     return films

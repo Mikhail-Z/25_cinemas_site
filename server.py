@@ -1,7 +1,6 @@
 from flask import Flask, render_template, jsonify, send_from_directory
 import os
 from scheduled_cache_updater import update_cache_periodically, get_films
-import threading
 
 app = Flask(__name__)
 
@@ -30,7 +29,4 @@ def api_documentation():
 
 
 if __name__ == "__main__":
-    thread = threading.Thread(target=update_cache_periodically, daemon=True)
-    thread.start()
-
     app.run()

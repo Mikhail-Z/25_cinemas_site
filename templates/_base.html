@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="{{ url_for('static', filename='favicon.ico') }}" rel="icon">
     <title>Так что же в кино?</title>
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -16,9 +16,7 @@
     <div class="navbar navbar-inverse bg-inverse">
       <div class="container d-flex justify-content-between">
         <a href="/" class="navbar-brand">Так что же в кино?</a>
-        <a href="/api/documentation">
-            <button class="btn btn-success">API</button>
-        </a>
+          <a href="/api/documentation"><button class="btn btn-success">API</button></a>
       </div>
     </div>
 
