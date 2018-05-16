@@ -12,10 +12,10 @@
   <div class="container">
     <div class="row">
         {% for film in films %}
-          <div class="col-md-4">
+          <div class="col-md-4 text-center" style="max-width: 70%">
               <div class="card" style="display: inline-block">
                 <img class="card-img-top" style="width: 100%; height: auto" src="{{ film["image"] }}" alt="Кадр из фильма">
-                <div class="card-body">
+                <div class="card-body" style="margin: 5px">
                     <h4 class="card-title">
                         {{ film['name'] }}
                     </h4>
