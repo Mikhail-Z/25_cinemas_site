@@ -1,11 +1,11 @@
 from werkzeug.contrib.cache import FileSystemCache
 from films_finder import get_best_films
-import tempfile
 
-ONE_DAY = 60 * 60 * 24
+ONE_HOUR = 60 * 60
 
+CACHE_DIR = "."
 
-cache = FileSystemCache(tempfile.gettempdir(), default_timeout=ONE_DAY)
+cache = FileSystemCache(CACHE_DIR, default_timeout=ONE_HOUR)
 
 
 def update_cache():

@@ -42,7 +42,7 @@ def get_film_page_on_afisha(raw_film_info):
 def parse_films_raw_info(raw_films_info, film_info, fst_idx, last_idx):
     for raw_film_info in raw_films_info[fst_idx: last_idx]:
         raw_film_main_info = raw_film_info.find("a", "card__link")
-        name = raw_film_main_info.find("h3", "card__title").text.strip()
+        title = raw_film_main_info.find("h3", "card__title").text.strip()
         description = get_film_description(raw_film_main_info)
         image_link = raw_film_main_info.find("img", "card__image")["src"]
         score = get_film_score(raw_film_info)
@@ -52,7 +52,7 @@ def parse_films_raw_info(raw_films_info, film_info, fst_idx, last_idx):
         cinemas_num_when_film_is_arthouse = 30
         if cinemas_num > cinemas_num_when_film_is_arthouse:
             film_info.append({
-                "name": name,
+                "title": title,
                 "description": description,
                 "image": image_link,
                 "score": score,
@@ -72,11 +72,14 @@ def parse_afisha_list(raw_html):
     threads = []
     films_info = []
 
-    for fst_thread_film_idx in range(0, films_num, films_per_thread):
-        last_thread_film_idx = min(fst_thread_film_idx+films_per_thread, films_num)
+    for fst_film_idx_for_thread in range(0, films_num, films_per_thread):
+        last_film_idx_for_thread = min(fst_film_idx_for_thread+films_per_thread, films_num)
         thread = threading.Thread(
             target=parse_films_raw_info,
-            args=(raw_info_about_films, films_info, fst_thread_film_idx, last_thread_film_idx,)
+            args=(
+                raw_info_about_films, films_info,
+                fst_film_idx_for_thread, last_film_idx_for_thread,
+            )
         )
         thread.start()
         threads.append(thread)
